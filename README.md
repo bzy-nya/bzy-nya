@@ -16,11 +16,11 @@ Here are some ideas to get you started:
 -->
 
 
-- 🔭 I’m currently an undergraduate of Xidian University.
+- 🎓 I’m currently an undergraduate of [🏫 XDU](https://www.xidian.edu.cn/).
 - 🌱 I’m currently learning computer science.
+- 🎈 2021 ICPC World Finalist, Golden Medal in ICPC Nanjing, Shenyang, Kunming Rigonals
 - 🏳️‍⚧️ I'm also a transwomen aka MtF.
 - 💬 You can contact me at https://t.me/telebzy on telegram.
 
 
-
-[![bzy's GitHub stats](https://github-readme-stats.vercel.app/api?username=bzy-nya&show_icons=true)](https://github.com/anuraghazra/github-readme-stats)
+[![bzy's GitHub stats](https://github-readme-stats.vercel.app/api?username=bzy-nya&show_icons=true&include_all_commits=true)](https://github.com/anuraghazra/github-readme-stats)
