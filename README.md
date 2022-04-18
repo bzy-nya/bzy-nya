@@ -17,9 +17,9 @@ Here are some ideas to get you started:
 
 
 - 🔭 I’m currently an undergraduate of Xidian University.
-- 🌱 I’m currently learning computer science
-- 🏳️‍⚧️ I'm also a transwomen aka MtF
-- 💬 You can contact me at bzy.mic@qq.com, or https://t.me/telebzy on telegram
+- 🌱 I’m currently learning computer science.
+- 🏳️‍⚧️ I'm also a transwomen aka MtF.
+- 💬 You can contact me at https://t.me/telebzy on telegram.
 
 
 
