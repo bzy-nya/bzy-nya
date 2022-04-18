@@ -14,3 +14,13 @@ Here are some ideas to get you started:
 - 😄 Pronouns: ...
 - ⚡ Fun fact: ...
 -->
+
+
+- 🔭 I’m currently an undergraduate of Xidian University.
+- 🌱 I’m currently learning computer science
+- 🏳️‍⚧️ I'm also a transwomen aka MtF
+- 💬 You can contact me at bzy.mic@qq.com, or https://t.me/telebzy on telegram
+
+
+
+[![bzy's GitHub stats](https://github-readme-stats.vercel.app/api?username=bzy-nya&show_icons=true)](https://github.com/anuraghazra/github-readme-stats)
