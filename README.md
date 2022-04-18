@@ -18,7 +18,6 @@ Here are some ideas to get you started:
 
 - 🎓 I’m currently an undergraduate of [🏫 XDU](https://www.xidian.edu.cn/).
 - 🌱 I’m currently learning computer science.
-- 🎈 2021 ICPC World Finalist, Golden Medal in ICPC Nanjing, Shenyang, Kunming Rigonals
 - 🏳️‍⚧️ I'm also a transwomen aka MtF.
 - 💬 You can contact me at https://t.me/telebzy on telegram.
 
