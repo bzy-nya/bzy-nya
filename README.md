@@ -22,4 +22,16 @@ Here are some ideas to get you started:
 - 💬 You can contact me at https://t.me/telebzy on telegram.
 
 
-[![bzy's GitHub stats](https://github-readme-stats.vercel.app/api?username=bzy-nya&show_icons=true&include_all_commits=true&icon_color=FB7299&title_color=FB7299&count_private=true)](https://github.com/anuraghazra/github-readme-stats) [![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=bzy-nya&layout=compact)](https://github.com/anuraghazra/github-readme-stats)
+<a href="https://github-readme-stats-one-bice.vercel.app/api?username=bzy-nya&show_icons=true&include_all_commits=true&role=OWNER,ORGANIZATION_MEMBER#gh-light-mode-only" target="_blank">
+  <img src="https://github-readme-stats-one-bice.vercel.app/api?username=bzy-nya&show_icons=true&include_all_commits=true&icon_color=FB7299&title_color=FB7299&role=OWNER,ORGANIZATION_MEMBER#gh-light-mode-only" alt="bzy-nya's GitHub stats" height="185px">
+</a>
+<a href="https://github-readme-stats-one-bice.vercel.app/api/top-langs/?username=bzy-nya&layout=compact&langs_count=8&include_all_commits=true&role=OWNER,ORGANIZATION_MEMBER#gh-light-mode-only">
+  <img src="https://github-readme-stats-one-bice.vercel.app/api/top-langs/?username=bzy-nya&layout=compact&langs_count=8&include_all_commits=true&icon_color=FB7299&title_color=FB7299&role=OWNER,ORGANIZATION_MEMBER#gh-light-mode-only" alt="Top Langs" height="185px">
+</a>
+
+<a href="https://github-readme-stats-one-bice.vercel.app/api?username=bzy-nya&theme=calm&show_icons=true&include_all_commits=true&icon_color=FB7299&title_color=FB7299&role=OWNER,ORGANIZATION_MEMBER#gh-dark-mode-only" target="_blank">
+  <img src="https://github-readme-stats-one-bice.vercel.app/api?username=bzy-nya&theme=calm&show_icons=true&include_all_commits=true&role=OWNER,ORGANIZATION_MEMBER#gh-dark-mode-only" alt="bzy-nya's GitHub stats" height="185px">
+</a>
+<a href="https://github-readme-stats-one-bice.vercel.app/api/top-langs/?username=bzy-nya&theme=calm&layout=compact&langs_count=8&include_all_commits=true&role=OWNER,ORGANIZATION_MEMBER#gh-dark-mode-only">
+  <img src="https://github-readme-stats-one-bice.vercel.app/api/top-langs/?username=bzy-nya&theme=calm&layout=compact&langs_count=8&include_all_commits=true&icon_color=FB7299&title_color=FB7299&role=OWNER,ORGANIZATION_MEMBER#gh-dark-mode-only" alt="Top Langs" height="185px">
+</a>
