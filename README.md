@@ -22,4 +22,4 @@ Here are some ideas to get you started:
 - 💬 You can contact me at https://t.me/telebzy on telegram.
 
 
-[![bzy's GitHub stats](https://github-readme-stats.vercel.app/api?username=bzy-nya&show_icons=true&include_all_commits=true&icon_color=FB7299&title_color=FB7299&count_private=true)](https://github.com/anuraghazra/github-readme-stats)
+[![bzy's GitHub stats](https://github-readme-stats.vercel.app/api?username=bzy-nya&show_icons=true&include_all_commits=true&icon_color=FB7299&title_color=FB7299&count_private=true)](https://github.com/anuraghazra/github-readme-stats) [![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=bzy-nya&layout=compact)](https://github.com/anuraghazra/github-readme-stats)
