@@ -16,8 +16,8 @@ Here are some ideas to get you started:
 -->
 
 
-- 🎓 I’m currently an undergraduate of [🏫 XDU](https://www.xidian.edu.cn/).
-- 🌱 I’m currently learning Computer Science.
+- 🎓 I’m currently an undergraduate of [🏫 XDU](https://www.xidian.edu.cn/), plan to further study at [🏛️ NJU](http://tcs.nju.edu.cn/).
+- 💭 I’m currently learning Theoretical Computer Science(probabilistic method mainly).
 - 🏳️‍⚧️ I'm also a transwomen aka MtF.
 - 💬 You can contact me at https://t.me/telebzy on telegram.
 
