@@ -16,10 +16,10 @@ Here are some ideas to get you started:
 -->
 
 
-- 🎓 I’m currently an undergraduate of [🏫 XDU](https://www.xidian.edu.cn/), plan to further study at [🏛️ NJU](http://tcs.nju.edu.cn/).
-- 💭 I’m currently learning Theoretical Computer Science(probabilistic method mainly).
-- 🏳️‍⚧️ I'm also a transwomen aka MtF.
-- 💬 You can contact me at https://t.me/telebzy on telegram.
+- 🎓 Bachelor's degree of Computer Science at [🏫 XDU](https://www.xidian.edu.cn/), pursuing master's degree at [🏛️ NJU](http://tcs.nju.edu.cn/).
+- 💭 Focusing on Theoretical Computer Science - probabilistic method mainly.
+- 🏳️‍⚧️ Also a transwomen aka MtF.
+- 💬 You can contact me at bzy.cirno@gmail.com by mail, or https://t.me/telebzy on telegram
 
 
 | <a href="https://github-readme-stats-one-bice.vercel.app/api?username=bzy-nya&show_icons=true&include_all_commits=true&icon_color=FB7299&title_color=FB7299&hide_border=true&role=OWNER,ORGANIZATION_MEMBER#gh-light-mode-only"><img align="center" src="https://github-readme-stats-one-bice.vercel.app/api?username=bzy-nya&show_icons=true&include_all_commits=true&icon_color=FB7299&title_color=FB7299&hide_border=true&role=OWNER,ORGANIZATION_MEMBER#gh-light-mode-only" /></a><a href="https://github-readme-stats-one-bice.vercel.app/api?username=bzy-nya&bg_color=0d1117&text_color=FB7299&show_icons=true&include_all_commits=true&icon_color=FB7299&title_color=FB7299&hide_border=true&role=OWNER,ORGANIZATION_MEMBER#gh-dark-mode-only"><img align="center" src="https://github-readme-stats-one-bice.vercel.app/api?username=bzy-nya&bg_color=0d1117&text_color=FB7299&show_icons=true&include_all_commits=true&icon_color=FB7299&title_color=FB7299&hide_border=true&role=OWNER,ORGANIZATION_MEMBER#gh-dark-mode-only" /></a> | <a href="https://github-readme-stats-one-bice.vercel.app/api/top-langs/?username=bzy-nya&layout=compact&langs_count=8&include_all_commits=true&icon_color=FB7299&hide_border=true&title_color=FB7299&role=OWNER,ORGANIZATION_MEMBER&hide=html#gh-light-mode-only"><img align="center" src="https://github-readme-stats-one-bice.vercel.app/api/top-langs/?username=bzy-nya&layout=compact&langs_count=8&include_all_commits=true&icon_color=FB7299&hide_border=true&title_color=FB7299&role=OWNER,ORGANIZATION_MEMBER&hide=html#gh-light-mode-only" /></a><a href="https://github-readme-stats-one-bice.vercel.app/api/top-langs/?username=bzy-nya&bg_color=0d1117&text_color=FB7299&layout=compact&langs_count=8&include_all_commits=true&icon_color=FB7299&hide_border=true&title_color=FB7299&role=OWNER,ORGANIZATION_MEMBER&hide=html#gh-dark-mode-only"><img align="center" src="https://github-readme-stats-one-bice.vercel.app/api/top-langs/?username=bzy-nya&bg_color=0d1117&text_color=FB7299&layout=compact&langs_count=8&include_all_commits=true&icon_color=FB7299&hide_border=true&title_color=FB7299&role=OWNER,ORGANIZATION_MEMBER&hide=html#gh-dark-mode-only" /></a> |
