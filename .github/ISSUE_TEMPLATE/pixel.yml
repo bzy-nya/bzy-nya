@@ -1,0 +1,10 @@
+name: "Toggle a Pixel"
+description: "Click a pixel on the board to toggle it"
+title: "[pixel] toggle (0,0)"
+labels: ["pixel"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This issue was auto-created by clicking the pixel board.
+        Just hit **Submit** — no edits needed!
