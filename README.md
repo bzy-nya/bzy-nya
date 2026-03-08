@@ -27,7 +27,7 @@ const ME: Profile = Profile {
 
 <!-- PIXEL:START -->
 <div align="center">
-<img src="pixel/board.png" width="640" alt="Pixel Board">
+<img src="https://raw.githubusercontent.com/bzy-nya/bzy-nya/refs/heads/main/pixel/board.png" width="640" alt="Pixel Board">
 <p>
 <a href="https://github.com/bzy-nya/bzy-nya/issues/new?template=pixel.yml">🎨 Click to toggle a pixel</a>
 </p>
