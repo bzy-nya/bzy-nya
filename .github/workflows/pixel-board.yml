@@ -6,7 +6,7 @@ on:
 
 jobs:
   toggle-pixel:
-    if: contains(github.event.issue.labels.*.name, 'pixel')
+    if: startsWith(github.event.issue.title, '[pixel]')
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -22,6 +22,7 @@ jobs:
         id: pixel
         env:
           ISSUE_TITLE: ${{ github.event.issue.title }}
+          ISSUE_BODY: ${{ github.event.issue.body }}
           ISSUE_USER: ${{ github.event.issue.user.login }}
         run: python pixel/render.py
         continue-on-error: true

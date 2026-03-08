@@ -1,30 +1,41 @@
 #!/usr/bin/env python3
 """
-Pixel board — two-color toggle, rendered as clickable HTML in README.
+Pixel board — two-color toggle, rendered as a single PNG in README.
 
-Each pixel is either OFF (#2B2B2B) or ON (#FB7299).
-Clicking a pixel in the README opens a pre-filled GitHub new-issue page.
-The Action parses the issue title, flips the bit, re-renders into README.
+Each pixel is either OFF (#5B5B5B) or ON (#FB7299).
+The entire board is rendered as one PNG image (board.png) — pure stdlib,
+no Pillow needed.  PNG avoids GitHub SVG rendering quirks.
+Users toggle pixels via issue forms; the Action parses the issue,
+flips the bit, re-renders the PNG and updates README.
 """
 
 import json
 import os
 import re
+import struct
 import sys
+import zlib
 from datetime import datetime, timezone
 from pathlib import Path
 
 BOARD_W, BOARD_H = 32, 16
+PX = 20           # cell size in SVG
+GAP = 2           # gap between rects
+RECT = PX - GAP   # rect size = 18
+RX = 3            # border radius
+COLOR_ON = "#FB7299"
+COLOR_OFF = "#5B5B5B"
+
 DIR = Path(__file__).parent
 ROOT = DIR.parent
 BOARD = DIR / "board.json"
+BOARD_PNG = DIR / "board.png"
 RATES = DIR / "rate_limit.json"
 README = ROOT / "README.md"
 
 REPO = "bzy-nya/bzy-nya"
 MARKER_START = "<!-- PIXEL:START -->"
 MARKER_END = "<!-- PIXEL:END -->"
-PX = 12  # display size of each pixel
 
 
 def gh_output(key: str, val: str):
@@ -42,46 +53,73 @@ def save_json(p: Path, data):
     p.write_text(json.dumps(data))
 
 
-def render_html(board: list[list[int]]) -> str:
-    """Generate HTML grid using per-row <div> elements.
+def _hex_to_rgb(h: str) -> tuple[int, int, int]:
+    """Convert '#RRGGBB' to (r, g, b)."""
+    h = h.lstrip("#")
+    return int(h[0:2], 16), int(h[2:4], 16), int(h[4:6], 16)
 
-    Horizontal gap: SVG files have an opaque #000 background (12×12)
-    with a smaller coloured rect (10×10 at offset 1,1).  Adjacent
-    images produce a 2 px black grid line — no CSS needed.
 
-    Vertical gap: each row is a <div> with height/font-size/line-height
-    constraints to prevent the inline-image baseline gap.  Row divs
-    are joined WITHOUT newlines to avoid whitespace text nodes.
+RGB_ON = _hex_to_rgb(COLOR_ON)
+RGB_OFF = _hex_to_rgb(COLOR_OFF)
+
+
+def _png_chunk(chunk_type: bytes, data: bytes) -> bytes:
+    crc = struct.pack(">I", zlib.crc32(chunk_type + data) & 0xFFFFFFFF)
+    return struct.pack(">I", len(data)) + chunk_type + data + crc
+
+
+def _make_png(width: int, height: int, rows: list[bytes]) -> bytes:
+    """Minimal PNG encoder (RGBA, 8-bit). rows = list of raw RGBA row bytes."""
+    sig = b"\x89PNG\r\n\x1a\n"
+    ihdr = struct.pack(">IIBBBBB", width, height, 8, 6, 0, 0, 0)
+    raw = b"".join(b"\x00" + row for row in rows)  # filter=None per row
+    return sig + _png_chunk(b"IHDR", ihdr) + _png_chunk(b"IDAT", zlib.compress(raw)) + _png_chunk(b"IEND", b"")
+
+
+def render_board_png(board: list[list[int]]):
+    """Generate the entire pixel board as a single PNG file.
+
+    Each cell is PX×PX.  The colored rect is RECT×RECT centered in
+    the cell, leaving a GAP-pixel background border that acts as
+    the grid gap.
     """
-    rows: list[str] = []
-    for r in range(BOARD_H):
-        cells: list[str] = []
-        for c in range(BOARD_W):
-            img = "pixel/on.svg" if board[r][c] else "pixel/off.svg"
-            url = (
-                f"https://github.com/{REPO}/issues/new?"
-                f"title=%5Bpixel%5D+toggle+%28{c}%2C{r}%29"
-                f"&labels=pixel"
-                f"&body=Toggling+pixel+at+%28{c}%2C+{r}%29.+Just+hit+Submit!"
-            )
-            cells.append(
-                f'<a href="{url}">'
-                f'<img src="{img}" width="{PX}" height="{PX}">'
-                f'</a>'
-            )
-        row_html = "".join(cells)
-        rows.append(
-            f'<div style="height:{PX}px;font-size:0;line-height:0;overflow:hidden">'
-            f'{row_html}</div>'
-        )
+    width = BOARD_W * PX
+    height = BOARD_H * PX
+    half = GAP // 2
 
-    # Join rows with NO whitespace — prevents text-node gaps between divs
+    # Pre-compute one scanline-row of RGBA bytes for each board row
+    # Gap pixels are fully transparent; colored pixels are fully opaque
+    rows: list[bytes] = []
+    for br in range(BOARD_H):
+        for py in range(PX):
+            scanline = bytearray()
+            in_rect_y = half <= py < half + RECT
+            for bc in range(BOARD_W):
+                rgb = RGB_ON if board[br][bc] else RGB_OFF
+                for px in range(PX):
+                    in_rect_x = half <= px < half + RECT
+                    if in_rect_y and in_rect_x:
+                        scanline.extend((*rgb, 255))
+                    else:
+                        scanline.extend((0, 0, 0, 0))
+            rows.append(bytes(scanline))
+
+    BOARD_PNG.write_bytes(_make_png(width, height, rows))
+
+
+def render_html() -> str:
+    """Generate HTML for README — single image + toggle link."""
+    width = BOARD_W * PX
     return (
-        '<div align="center">'
-        + "".join(rows)
-        + '<sub>Click any pixel to toggle it '
-        '— each click opens an issue, the bot does the rest '
-        '(1 per person per minute)</sub>'
+        '<div align="center">\n'
+        f'<img src="pixel/board.png" width="{width}" alt="Pixel Board">\n'
+        '<p>\n'
+        f'<a href="https://github.com/{REPO}/issues/new?template=pixel.yml">'
+        '🎨 Click to toggle a pixel</a>\n'
+        '</p>\n'
+        '<sub>Pick a coordinate in the form — '
+        'each submission opens an issue, the bot does the rest '
+        '(1 per person per minute)</sub>\n'
         '</div>'
     )
 
@@ -97,7 +135,6 @@ def inject_into_readme(html: str):
     if pattern.search(text):
         text = pattern.sub(replacement, text)
     else:
-        # Markers not found — append
         text = text.rstrip() + f"\n\n{replacement}\n"
     README.write_text(text)
 
@@ -154,27 +191,50 @@ def preset_cat() -> list[list[int]]:
     return board
 
 
+def parse_coordinates() -> tuple[int, int]:
+    """Parse pixel coordinates from issue title or body.
+
+    Supports two formats:
+    1. Title: [pixel] toggle (X, Y)
+    2. Issue form body with ### X / ### Y sections
+    """
+    title = os.environ.get("ISSUE_TITLE", "")
+    body = os.environ.get("ISSUE_BODY", "")
+
+    # Try title first: [pixel] toggle (X, Y)
+    m = re.search(r"toggle\s*\((\d+)\s*,\s*(\d+)\)", title, re.IGNORECASE)
+    if m:
+        return int(m.group(1)), int(m.group(2))
+
+    # Try issue form body:
+    # ### X (0–31)\n\n15\n\n### Y (0–15)\n\n8
+    x_match = re.search(r"###\s*X[^\n]*\n\n(\d+)", body)
+    y_match = re.search(r"###\s*Y[^\n]*\n\n(\d+)", body)
+    if x_match and y_match:
+        return int(x_match.group(1)), int(y_match.group(1))
+
+    fail(f"Could not parse coordinates from title or body: {title}")
+    return 0, 0  # unreachable
+
+
 def main():
     if "--init" in sys.argv:
         board = preset_cat()
         save_json(BOARD, board)
         save_json(RATES, {})
-        html = render_html(board)
+        render_board_png(board)
+        html = render_html()
         inject_into_readme(html)
         print("Initialized board with preset cat.")
         return
 
-    # Parse from issue title: [pixel] toggle (X,Y)
+    # ── Issue-triggered mode ──
     title = os.environ.get("ISSUE_TITLE", "")
     user = os.environ.get("ISSUE_USER", "")
     if not title or not user:
         fail("Missing ISSUE_TITLE or ISSUE_USER.")
 
-    m = re.search(r"toggle\s*\((\d+)\s*,\s*(\d+)\)", title, re.IGNORECASE)
-    if not m:
-        fail(f"Could not parse coordinates from title: {title}")
-
-    x, y = int(m.group(1)), int(m.group(2))
+    x, y = parse_coordinates()
 
     if not (0 <= x < BOARD_W):
         fail(f"X={x} out of range [0, {BOARD_W - 1}].")
@@ -199,7 +259,8 @@ def main():
     board[y][x] = 0 if old else 1
     save_json(BOARD, board)
 
-    html = render_html(board)
+    render_board_png(board)
+    html = render_html()
     inject_into_readme(html)
 
     state = "ON" if board[y][x] else "OFF"
